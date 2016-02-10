@@ -12,6 +12,7 @@ echo "Attempting to build $project for Windows"
   -silent-crashes \
   -logFile $(pwd)/unity.log \
   -projectPath $(pwd) \
+  -buildTarget win32
   -buildWindowsPlayer "$(pwd)/Build/windows/$project.exe" \
   -quit
 
