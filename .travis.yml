@@ -9,7 +9,6 @@ install:
 - "./Scripts/install.sh"
 script:
 - "./Scripts/build.sh"
-before_deploy:
 - "./Scripts/deploy.sh"
 deploy:
   provider: releases
