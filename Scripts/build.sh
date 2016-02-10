@@ -32,7 +32,7 @@ echo "Attempting to build $project for Linux"
   -silent-crashes \
   -logFile $(pwd)/unity.log \
   -projectPath $(pwd) \
-  -buildLinuxUniversalPlayer "$(pwd)/Build/linux/$project.exe" \
+  -buildLinuxUniversalPlayer "$(pwd)/Build/linux/$project" \
   -quit
 
 echo 'Logs from build'
