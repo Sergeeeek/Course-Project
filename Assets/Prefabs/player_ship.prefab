@@ -72,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _acceleration: 1
   _maxSpeed: 10
-  _drag: 0.8
+  _drag: 0.1
   _currentVelocity: {x: 0, y: 0, z: 0}
 --- !u!198 &19876466
 ParticleSystem:
