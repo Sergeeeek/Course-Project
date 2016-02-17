@@ -124,54 +124,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11478336, guid: d360943033ef1485894fe874d8bb52a8, type: 2}
-      propertyPath: _gun
-      value: 
-      objectReference: {fileID: 1074172767}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d360943033ef1485894fe874d8bb52a8, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &184683836
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1263645728}
-    m_Modifications:
-    - target: {fileID: 472618, guid: 930bd5bb8b89846e2892e4108f81432b, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 472618, guid: 930bd5bb8b89846e2892e4108f81432b, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 472618, guid: 930bd5bb8b89846e2892e4108f81432b, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 472618, guid: 930bd5bb8b89846e2892e4108f81432b, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 472618, guid: 930bd5bb8b89846e2892e4108f81432b, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 472618, guid: 930bd5bb8b89846e2892e4108f81432b, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 472618, guid: 930bd5bb8b89846e2892e4108f81432b, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 472618, guid: 930bd5bb8b89846e2892e4108f81432b, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 930bd5bb8b89846e2892e4108f81432b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &210465647
 GameObject:
@@ -234,7 +188,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.6875
+  orthographic size: 4.2193675
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -278,12 +232,95 @@ MonoBehaviour:
   UnitsSize: 15
   constraint: 0
   camera: {fileID: 210465651}
---- !u!114 &1074172767 stripped
+--- !u!1 &890486511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 890486514}
+  - 212: {fileID: 890486513}
+  - 114: {fileID: 890486512}
+  m_Layer: 0
+  m_Name: enemy_ship
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &890486512
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11427726, guid: 930bd5bb8b89846e2892e4108f81432b,
-    type: 2}
-  m_PrefabInternal: {fileID: 184683836}
-  m_Script: {fileID: 11500000, guid: 6c25375b63a2542c2a91244d7c566266, type: 3}
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890486511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e65ad10caf10d7e499e3d3e92a0dc798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _xAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: -1.9303484
+      outSlope: -1.9303484
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: -1.9806724
+      outSlope: -1.9806724
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  _animationScale: 50
+  _downMovementSpeed: 0.5
+  _animationLengthMultiplier: 5
+--- !u!212 &890486513
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890486511}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 22d6907d0ea80438aaed093cf8d43768, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+--- !u!4 &890486514
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890486511}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0.00000035762787}
+  m_LocalPosition: {x: 0, y: 14.19, z: 0}
+  m_LocalScale: {x: 0.7497808, y: 0.74978083, z: 0.74978083}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
 --- !u!1 &1185263481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,7 +1918,7 @@ Transform:
   m_GameObject: {fileID: 1677971899}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 1.0386293, y: 1.0386293, z: 1.0386293}
+  m_LocalScale: {x: 0.9846582, y: 0.9846582, z: 0.9846582}
   m_Children: []
   m_Father: {fileID: 210465652}
   m_RootOrder: 2
@@ -1915,3 +1952,21 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &1941988438 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 136282, guid: d360943033ef1485894fe874d8bb52a8, type: 2}
+  m_PrefabInternal: {fileID: 162239794}
+--- !u!61 &1941988441
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1941988438}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: -0.05396462}
+  serializedVersion: 2
+  m_Size: {x: 1.73, y: 2.8020728}
