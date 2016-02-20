@@ -9,11 +9,6 @@ public class EnemyController : MonoBehaviour
 
 	void Update()
 	{
-		_xAnimation.postWrapMode = WrapMode.Loop;
-
-		var movement = -transform.up * _downMovementSpeed;
-		movement.x = _xAnimation.Evaluate(Time.timeSinceLevelLoad / _animationLength) * _animationScale;
-
-		transform.Translate(movement * Time.deltaTime);
+		
 	}
 }

@@ -2,6 +2,8 @@
 
 public class Projectile : MonoBehaviour
 {
+	public GameObject _hitEffect;
+	public float _damage;
 	public float _speed;
 
 	void Update()
@@ -15,5 +17,18 @@ public class Projectile : MonoBehaviour
 		}
 
 		transform.Translate(Vector3.up * _speed * Time.deltaTime); // Translate двигает объект относительно локальных координат
+	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		var health = other.gameObject.GetComponent<Health>();
+		if(health == null)
+			return;
+
+		if((gameObject.tag == "PlayerBullet" && other.gameObject.tag == "Enemy") || (gameObject.tag == "EnemyBullet" && other.gameObject.tag == "Player"))
+		{
+			health.UpdateHealth(-_damage);
+			gameObject.SetActive(false);
+		}
 	}
 }

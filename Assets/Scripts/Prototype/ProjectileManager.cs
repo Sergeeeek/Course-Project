@@ -73,6 +73,7 @@ public class ProjectileManager : MonoBehaviour
 		var obj = Instantiate(_projectilePrefab);
 		//obj.transform.parent = transform;
 		obj.SetActive(false);
+		obj.gameObject.tag = gameObject.tag;
 		_projectilePool.Add(obj);
 
 		return obj;

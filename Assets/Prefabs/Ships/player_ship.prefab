@@ -41,6 +41,8 @@ GameObject:
   - 4: {fileID: 492128}
   - 212: {fileID: 21217020}
   - 114: {fileID: 11478336}
+  - 61: {fileID: 6157176}
+  - 114: {fileID: 11417696}
   m_Layer: 0
   m_Name: player_ship
   m_TagString: Player
@@ -116,6 +118,34 @@ Transform:
   - {fileID: 419030}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!61 &6157176
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136282}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.73, y: 2.91}
+--- !u!114 &11417696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b06ab7356354706bc0ec1437443293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _health: 100
+  _deathEffect: {fileID: 198470, guid: 3f70bc0a2dceb41db94ab126741464ec, type: 2}
 --- !u!114 &11435560
 MonoBehaviour:
   m_ObjectHideFlags: 1
