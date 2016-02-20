@@ -3,15 +3,17 @@
 public class Projectile : MonoBehaviour
 {
 	public float _speed;
-	public Vector3 _direction;
 
 	void Update()
 	{
-		if(_direction.magnitude >= 1f)
+		var viewPortPos = Camera.main.WorldToViewportPoint(transform.position);
+
+		if(viewPortPos.x > 1f || viewPortPos.x < 0f || viewPortPos.y > 1f || viewPortPos.y < 0f)
 		{
-			_direction.Normalize();
+			gameObject.SetActive(false);
+			return;
 		}
-		
-		transform.Translate(_direction * _speed * Time.deltaTime);
+
+		transform.Translate(Vector3.up * _speed * Time.deltaTime); // Translate двигает объект относительно локальных координат
 	}
 }

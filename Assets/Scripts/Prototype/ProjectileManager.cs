@@ -25,26 +25,9 @@ public class ProjectileManager : MonoBehaviour
 		StartCoroutine(ShootCoroutine());
 	}
 
-	void FixedUpdate()
-	{
-		float horizExtent = Camera.main.orthographicSize * Screen.width / Screen.height;
-		float vertExtent = Camera.main.orthographicSize;
-
-		var x = Camera.main.transform.position.x;
-		var y = Camera.main.transform.position.y;
-
-		foreach(var proj in _projectilePool)
-		{
-			if(Mathf.Abs(proj.transform.position.y) > vertExtent + y || Mathf.Abs(proj.transform.position.x) > horizExtent + y)
-			{
-				proj.SetActive(false);
-			}
-		}
-	}
-
 	void SetupPool()
 	{
-		var poolSize = _shoootPoints.Count * (int)Mathf.Round((1f / _shootInterval)) * 5;
+		var poolSize = _shoootPoints.Count * (int)Mathf.Round((1f / _shootInterval));
 
 		_projectilePool = new List<GameObject>(poolSize);
 
@@ -79,7 +62,6 @@ public class ProjectileManager : MonoBehaviour
 			freeProj.transform.rotation = point.rotation;
 
 			var projComponent = freeProj.GetComponent<Projectile>();
-			projComponent._direction = point.up;
 			projComponent._speed = _projectileSpeed;
 
 			freeProj.SetActive(true);
