@@ -1,11 +1,6 @@
-language: objective-c
-osx_image: xcode61
-rvm:
-- 2.1.2
+sudo: required
+dist: trusty
 install:
-- chmod a+x ./Scripts/install.sh
-- chmod a+x ./Scripts/build.sh
-- chmod a+x ./Scripts/deploy.sh
 - "./Scripts/install.sh"
 script:
 - "./Scripts/build.sh"
@@ -15,8 +10,11 @@ deploy:
   provider: releases
   api_key:
     secure: k5tU7cYE426h1qnKXZ+DojLnSwDtHA6KNmkRL+Y/jZJLhymWRBcP/7jykYzYqsgE8vglC/raiB7Fo91F7B5Gve4Yo68UbEoLAtqsAwEFAH4dSFIdv3/gSnIqXxxJ/RoeTJyy3LsdA5lzTonf0OEOQcFiZ1wLxXWJSjM1Y+x/7KHB/3EWxO+4wVdddEeMj67E9LmxetJLwWZgiv4QAWOs0A52d0HM4/PcPoo2d6LXMsCVJ15WJ0wpppyC0I24STzMVfIc0WMeeUJqmjIQ3FJj4Nt2kcJ6j4CjFbm5WtGScAAs4qNbgQt7l/peDKRi5ULl6hLw9wlrInkkv9l/Jr07FGwL5vqziO0IBmHowPVOiNzvxI3qq0CtQCF2jneIQ+p5YgAZbj2VDqge2VS0W/TzC4vcRRmb1ggmFDYBhhD/+8h24KOV7WmCnTSO4jI2wCGraecOZpHaCA0NlmFgUS4FhN4kj1oKevTCGn3HsQbmdWm2y1bTq6OMoWwdB/bbWsvx2/FHHVNtsN/+zaypA4biUrsqj6BnTxM4qKwfRSmmj8bTe2bj8EoesWwwP6B8SC/93SrNOLqYrOqodaMidtPT5GlT9KSoD8r+YIkVybKvuVjAUxaJnXovxjKo3q0fFc3LaSSzBoXOg91+Ft2D+JTgLk9YlA4PQWLJFKP35Y9sT4A=
+  file_glob: true
   file:
-  - "./Build/windows.zip"
+  - "Course-Project-windows*.tar.gz"
+  - "Course-Project-linux*.tar.gz"
+  - "Course-Project-osx*.tar.gz"
   skip_cleanup: true
   on:
-    tags: true
+    branch: master

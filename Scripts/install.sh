@@ -4,16 +4,18 @@
 
 # This link changes from time to time. I haven't found a reliable hosted installer package for doing regular
 # installs like this. You will probably need to grab a current link from: http://unity3d.com/get-unity/download/archive
-echo 'Downloading from https://github.com/github/git-lfs/releases/download/v1.1.1/git-lfs-darwin-amd64-1.1.1.tar.gz'
-curl -o git-lfs.tar.gz https://github.com/github/git-lfs/releases/download/v1.1.1/git-lfs-darwin-amd64-1.1.1.tar.gz
-
 echo 'Installing git-lfs'
-tar -xzvf git-lfs.tar.gz
-sudo ./git-lfs-1.1.1/install.sh
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+
+sudo apt-get install git-lfs
+
+git lfs install
 git lfs pull
 
-echo 'Downloading from http://netstorage.unity3d.com/unity/e87ab445ead0/MacEditorInstaller/Unity-5.3.2f1.pkg: '
-curl -o Unity.pkg http://netstorage.unity3d.com/unity/e87ab445ead0/MacEditorInstaller/Unity-5.3.2f1.pkg
+echo 'Downloading from http://download.unity3d.com/download_unity/linux/unity-editor-5.3.2f1+20160208_amd64.deb'
+curl -o unity.deb http://download.unity3d.com/download_unity/linux/unity-editor-5.3.2f1+20160208_amd64.deb
 
-echo 'Installing Unity.pkg'
-sudo installer -dumplog -package Unity.pkg -target /
+echo 'Installing Unity'
+sudo dpkg -i unity.deb
+echo 'Fixing dependencies'
+sudo apt-get -f install
