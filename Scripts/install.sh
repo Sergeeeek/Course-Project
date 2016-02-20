@@ -5,9 +5,11 @@
 # This link changes from time to time. I haven't found a reliable hosted installer package for doing regular
 # installs like this. You will probably need to grab a current link from: http://unity3d.com/get-unity/download/archive
 echo 'Installing git-lfs'
-curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+curl -o git-lfs.tar.gz https://github.com/github/git-lfs/releases/download/v1.1.1/git-lfs-linux-amd64-1.1.1.tar.gz
 
-sudo apt-get install git-lfs
+tar -xvzf git-lfs.tar.gz
+chmod +x git-lfs-1.1.1/install.sh
+git-lfs-1.1.1/install.sh
 
 git lfs install
 git lfs pull
