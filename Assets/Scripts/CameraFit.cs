@@ -122,12 +122,7 @@ public class CameraFit : MonoBehaviour
 
     private void ComputeResolution()
     {
-        float deviceWidth;
-        float deviceHeight;
         float leftX, rightX, topY, bottomY;
-
-        deviceWidth = Screen.width;
-        deviceHeight = Screen.height;
 
         if(constraint == Constraint.Landscape){
             camera.orthographicSize = 1f / camera.aspect * UnitsSize / 2f;    
@@ -164,9 +159,10 @@ public class CameraFit : MonoBehaviour
 
     private void Update()
     {
-        #if UNITY_EDITOR
-        ComputeResolution();
-        #endif
+        if(Application.isEditor)
+        {
+            ComputeResolution();
+        }
     }
 
     void OnDrawGizmos() {
