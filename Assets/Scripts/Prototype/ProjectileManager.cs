@@ -78,4 +78,12 @@ public class ProjectileManager : MonoBehaviour
 
 		return obj;
 	}
+
+	void OnDestroy()
+	{
+		foreach(var proj in _projectilePool)
+		{
+			proj.GetComponent<Projectile>()._dieOnHit = true;
+		}
+	}
 }
