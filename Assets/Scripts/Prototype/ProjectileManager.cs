@@ -15,14 +15,14 @@ public class ProjectileManager : MonoBehaviour
 
 	List<GameObject> _projectilePool;
 
+    float _timeFromLastShot;
+
 	void Start()
 	{
 		if(_projectilePrefab == null)
 			gameObject.SetActive(false);
 
 		SetupPool();
-
-		StartCoroutine(ShootCoroutine());
 	}
 
 	void SetupPool()
@@ -37,18 +37,16 @@ public class ProjectileManager : MonoBehaviour
 		}
 	}
 
-	IEnumerator ShootCoroutine()
-	{
-		while(true)
-		{
-			if(_alwaysShoot || _shooting)
-			{
-				Shoot();
-			}
+    void FixedUpdate()
+    {
+        if (_timeFromLastShot >= _shootInterval && (_alwaysShoot || _shooting))
+        {
+            Shoot();
+            _timeFromLastShot = 0f;
+        }
 
-			yield return new WaitForSeconds(_shootInterval);
-		}
-	}
+        _timeFromLastShot += Time.deltaTime;
+    }
 
 	void Shoot()
 	{
@@ -81,9 +79,17 @@ public class ProjectileManager : MonoBehaviour
 
 	void OnDestroy()
 	{
-		foreach(var proj in _projectilePool)
+		foreach(var obj in _projectilePool)
 		{
-			proj.GetComponent<Projectile>()._dieOnHit = true;
+			if(obj == null)
+				continue;
+
+			var proj = obj.GetComponent<Projectile>();
+			if(proj == null)
+				continue;
+
+			proj._dieOnHit = true;
+			
 		}
 	}
 }
