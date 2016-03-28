@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [ExecuteInEditMode]
 public class EnemySpawner : MonoBehaviour
@@ -48,7 +50,8 @@ public class EnemySpawner : MonoBehaviour
 		}
 	}
 
-	void OnDrawGizmosSelected()
+#if UNITY_EDITOR
+    void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.green;
 		var p1 = transform.TransformPoint(Vector3.down * _size / 2f);
@@ -63,4 +66,5 @@ public class EnemySpawner : MonoBehaviour
 
 		Handles.DotCap(0, lerpPos, Quaternion.identity, HandleUtility.GetHandleSize(lerpPos) * 0.1f);
 	}
+#endif
 }
