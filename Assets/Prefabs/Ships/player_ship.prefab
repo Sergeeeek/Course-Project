@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &101638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 488700}
+  - 114: {fileID: 11413450}
+  m_Layer: 0
+  m_Name: Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &126348
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 421142}
+  m_Layer: 0
+  m_Name: p1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &136282
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,31 +101,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &409166
+--- !u!4 &421142
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114814}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.0240008, z: 0.000000834465}
+  m_GameObject: {fileID: 126348}
+  m_LocalRotation: {x: 0, y: 0, z: -0.70710665, w: 0.70710695}
+  m_LocalPosition: {x: 1.55, y: -0.363, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 419030}
+  m_Father: {fileID: 488700}
   m_RootOrder: 0
---- !u!4 &419030
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 119904}
-  m_LocalRotation: {x: 0, y: 0, z: -0.707106, w: 0.7071076}
-  m_LocalPosition: {x: 1.5700002, y: -0.33, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 409166}
-  m_Father: {fileID: 492128}
-  m_RootOrder: 1
 --- !u!4 &439794
 Transform:
   m_ObjectHideFlags: 1
@@ -114,11 +132,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166200}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.54, y: -0.58, z: -1}
+  m_LocalPosition: {x: -1.54, y: -0.58, z: -2}
   m_LocalScale: {x: 1.0470657, y: 1.0470655, z: 1.0470651}
   m_Children: []
   m_Father: {fileID: 492128}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &458114
 Transform:
   m_ObjectHideFlags: 1
@@ -126,11 +144,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172326}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.41, y: -0.03, z: -1}
+  m_LocalPosition: {x: -1.41, y: -0.03, z: -3}
   m_LocalScale: {x: 1.4508005, y: 1.4508003, z: 1.4508}
   m_Children: []
   m_Father: {fileID: 492128}
-  m_RootOrder: 2
+  m_RootOrder: 1
+--- !u!4 &488700
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 421142}
+  m_Father: {fileID: 492128}
+  m_RootOrder: 3
 --- !u!4 &492128
 Transform:
   m_ObjectHideFlags: 1
@@ -142,9 +173,9 @@ Transform:
   m_LocalScale: {x: 0.69163007, y: 0.6916302, z: 0.6916302}
   m_Children:
   - {fileID: 439794}
-  - {fileID: 419030}
   - {fileID: 458114}
   - {fileID: 451986}
+  - {fileID: 488700}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!60 &6076092
@@ -203,6 +234,26 @@ PolygonCollider2D:
     - - {x: 0.31, y: 0.33499998}
       - {x: 0.39999998, y: 0.385}
       - {x: 0.41, y: 0.315}
+--- !u!114 &11413450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c25375b63a2542c2a91244d7c566266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shoootPoints:
+  - {fileID: 421142}
+  _projectilePrefab: {fileID: 167852, guid: 5231329a5c3ba4436aa9886d57046464, type: 2}
+  _bulletOwner: 1
+  _projectileSpeed: 30
+  _projectileDamage: 5
+  _alwaysShoot: 0
+  _shootInterval: 0.15
+  _shooting: 0
 --- !u!114 &11417696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,7 +278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5943ad6657ef4594afe93df11ab9596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gun: {fileID: 0}
   _acceleration: 1
   _maxSpeed: 10
   _drag: 0.1

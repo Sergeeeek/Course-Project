@@ -125,6 +125,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
+--- !u!1 &161124789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 161124790}
+  - 114: {fileID: 161124791}
+  m_Layer: 0
+  m_Name: Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &161124790
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 161124789}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 349954864}
+  m_Father: {fileID: 2063954790}
+  m_RootOrder: 3
+--- !u!114 &161124791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 161124789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c25375b63a2542c2a91244d7c566266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shoootPoints:
+  - {fileID: 349954864}
+  _projectilePrefab: {fileID: 167852, guid: 5231329a5c3ba4436aa9886d57046464, type: 2}
+  _bulletOwner: 1
+  _projectileSpeed: 30
+  _projectileDamage: 5
+  _alwaysShoot: 0
+  _shootInterval: 0.15
+  _shooting: 0
 --- !u!1 &210465647
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,6 +276,33 @@ MonoBehaviour:
   UnitsSize: 10
   constraint: 1
   camera: {fileID: 210465651}
+--- !u!1 &349954863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 349954864}
+  m_Layer: 0
+  m_Name: p1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &349954864
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 349954863}
+  m_LocalRotation: {x: 0, y: 0, z: -0.70710665, w: 0.70710695}
+  m_LocalPosition: {x: 1.55, y: -0.363, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 161124790}
+  m_RootOrder: 0
 --- !u!1001 &472786303
 Prefab:
   m_ObjectHideFlags: 0
@@ -265,6 +341,14 @@ Prefab:
     - target: {fileID: 492128, guid: d360943033ef1485894fe874d8bb52a8, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 458114, guid: d360943033ef1485894fe874d8bb52a8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 451986, guid: d360943033ef1485894fe874d8bb52a8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d360943033ef1485894fe874d8bb52a8, type: 2}
@@ -2028,6 +2112,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 0
     m_RotationOrder: 0
+  _spawnAtRandomLocations: 0
   _timeScale: 0.3
   _spawnInterval: 1
   _enemyPrefab: {fileID: 190046, guid: 9346241e391e34ddfbfded43051553c2, type: 2}
@@ -2128,6 +2213,26 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 210465651}
+    - target: {fileID: 11457444, guid: 58b696b42a89f6f4eb28466c1c327882, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 74919686}
+    - target: {fileID: 11457444, guid: 58b696b42a89f6f4eb28466c1c327882, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Retry
+      objectReference: {fileID: 0}
+    - target: {fileID: 11456472, guid: 58b696b42a89f6f4eb28466c1c327882, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 74919686}
+    - target: {fileID: 11456472, guid: 58b696b42a89f6f4eb28466c1c327882, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58b696b42a89f6f4eb28466c1c327882, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &2063954790 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 492128, guid: d360943033ef1485894fe874d8bb52a8, type: 2}
+  m_PrefabInternal: {fileID: 472786303}
