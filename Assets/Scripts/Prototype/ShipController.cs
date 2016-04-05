@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class ShipController : MonoBehaviour
 {
-	public ProjectileManager _gun;
+	List<ProjectileManager> _guns;
 
 	public float _acceleration;
 	public float _maxSpeed;
@@ -15,11 +16,7 @@ public class ShipController : MonoBehaviour
 
 	void Start()
 	{
-		if(_gun == null)
-		{
-			Debug.LogError("Gun = null");
-			gameObject.SetActive(false);
-		}
+		_guns = new List<ProjectileManager>(GetComponentsInChildren<ProjectileManager>());
 
 		_objectSize = GetComponent<SpriteRenderer>().bounds.size;
 	}
@@ -77,7 +74,8 @@ public class ShipController : MonoBehaviour
 
 		keepOnScreen();
 
-		_gun._shooting = Input.GetButton("ShipFire") || Input.touchSupported;
+		var shooting = Input.GetButton("ShipFire") || Input.touchSupported;
+		_guns.ForEach(x => x._shooting = shooting);
 	}
 
 	void keepOnScreen()

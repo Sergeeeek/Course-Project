@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class ProjectileManager : MonoBehaviour
 {
+	public enum BulletOwner
+	{
+		EnemyBullet,
+		PlayerBullet
+	}
+
 	public List<Transform> _shoootPoints = new List<Transform>();
 	public GameObject _projectilePrefab;
 
+	public BulletOwner _bulletOwner;
+
 	public float _projectileSpeed;
+	public float _projectileDamage;
 	public bool _alwaysShoot;
 	public float _shootInterval;
 
@@ -15,14 +24,24 @@ public class ProjectileManager : MonoBehaviour
 
 	List<GameObject> _projectilePool;
 
+	float _timeFromLastShot;
+
 	void Start()
 	{
 		if(_projectilePrefab == null)
 			gameObject.SetActive(false);
 
 		SetupPool();
+	}
 
-		StartCoroutine(ShootCoroutine());
+	void Update()
+	{
+		_timeFromLastShot += Time.deltaTime;
+
+		if((_alwaysShoot || _shooting) && _timeFromLastShot >= _shootInterval)
+		{
+			Shoot();
+		}
 	}
 
 	void SetupPool()
@@ -34,19 +53,6 @@ public class ProjectileManager : MonoBehaviour
 		for(int i = 0; i < poolSize; i++)
 		{
 			SpawnProjectile();
-		}
-	}
-
-	IEnumerator ShootCoroutine()
-	{
-		while(true)
-		{
-			if(_alwaysShoot || _shooting)
-			{
-				Shoot();
-			}
-
-			yield return new WaitForSeconds(_shootInterval);
 		}
 	}
 
@@ -66,6 +72,8 @@ public class ProjectileManager : MonoBehaviour
 
 			freeProj.SetActive(true);
 		}
+
+		_timeFromLastShot = 0f;
 	}
 
 	GameObject SpawnProjectile()
@@ -73,7 +81,8 @@ public class ProjectileManager : MonoBehaviour
 		var obj = Instantiate(_projectilePrefab);
 		//obj.transform.parent = transform;
 		obj.SetActive(false);
-		obj.gameObject.tag = gameObject.tag;
+		obj.gameObject.tag = _bulletOwner.ToString();
+		obj.GetComponent<Projectile>()._damage = _projectileDamage;
 		_projectilePool.Add(obj);
 
 		return obj;
@@ -81,9 +90,17 @@ public class ProjectileManager : MonoBehaviour
 
 	void OnDestroy()
 	{
-		foreach(var proj in _projectilePool)
+		foreach(var obj in _projectilePool)
 		{
-			proj.GetComponent<Projectile>()._dieOnHit = true;
+			if(obj == null)
+				continue;
+			
+			var proj = obj.GetComponent<Projectile>();
+
+			if(proj != null)
+			{
+				proj._dieOnHit = true;
+			}
 		}
 	}
 }

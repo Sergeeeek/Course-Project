@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 [ExecuteInEditMode]
 public class EnemySpawner : MonoBehaviour
@@ -7,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
 #region Public Fields
 	public float _size = 10f;
 	public AnimationCurve _animation;
+	public bool _spawnAtRandomLocations;
 
 	public float _timeScale = 1f;
 	public float _spawnInterval = 1f;
@@ -38,7 +41,9 @@ public class EnemySpawner : MonoBehaviour
 			var p1 = transform.TransformPoint(Vector3.down * _size / 2f);
 			var p2 = transform.TransformPoint(Vector3.up * _size / 2f);
 
-			var lerpPos = Vector3.Lerp(p1, p2, _animation.Evaluate(_timer * _timeScale));
+			var t = _spawnAtRandomLocations ? Random.Range(0f, 1f) : _animation.Evaluate(_timer * _timeScale);
+
+			var lerpPos = Vector3.Lerp(p1, p2, t);
 
 			if(_enemyPrefab != null)
 				Instantiate(_enemyPrefab, lerpPos, _enemyPrefab.transform.rotation);
@@ -48,6 +53,7 @@ public class EnemySpawner : MonoBehaviour
 		}
 	}
 
+	#if UNITY_EDITOR
 	void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.green;
@@ -63,4 +69,5 @@ public class EnemySpawner : MonoBehaviour
 
 		Handles.DotCap(0, lerpPos, Quaternion.identity, HandleUtility.GetHandleSize(lerpPos) * 0.1f);
 	}
+	#endif
 }
