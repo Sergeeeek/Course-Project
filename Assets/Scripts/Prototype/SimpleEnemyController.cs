@@ -6,6 +6,6 @@ public class SimpleEnemyController : MonoBehaviour
 
 	void Update()
 	{
-		transform.Translate(Vector3.up * _speed * Time.deltaTime);
+		transform.Translate(Vector3.left * _speed * Time.deltaTime);
 	}
 }

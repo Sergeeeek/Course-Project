@@ -55,7 +55,6 @@ public class ProjectileManager : MonoBehaviour
 			SpawnProjectile();
 		}
 	}
-
 	void Shoot()
 	{
 		foreach(var point in _shoootPoints)
