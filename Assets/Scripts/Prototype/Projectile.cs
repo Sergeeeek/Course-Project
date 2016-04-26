@@ -12,6 +12,9 @@ public class Projectile : MonoBehaviour
 	// уничтожен, а не деактивирован
 	public bool _dieOnHit;
 
+    public float _shakeDuration = 0.2f;
+    public float _shakeStrength = 5f;
+
 	void Update()
 	{
 		// Получаем координаты viewport'а из координат мира этой пули
@@ -37,6 +40,11 @@ public class Projectile : MonoBehaviour
 		// Если эта пуля принадлежит игроку и триггер - враг или если эта пуля принадлежит врагу и триггер - игрок, то
 		if((gameObject.tag == "PlayerBullet" && other.gameObject.tag == "Enemy") || (gameObject.tag == "EnemyBullet" && other.gameObject.tag == "Player"))
 		{
+            if(gameObject.tag == "PlayerBullet")
+            {
+                Camera.main.GetComponent<CameraShake>().Shake(_shakeDuration, _shakeStrength);
+            }
+
 			health.UpdateHealth(-_damage); // наносим урон
 			if(_hitEffect != null) // если есть префаб эввекта попадания
 				Instantiate(_hitEffect, transform.position, Quaternion.identity); // то создаём этот эффект в месте попадания

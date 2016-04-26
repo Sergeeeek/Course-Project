@@ -77,6 +77,8 @@ MonoBehaviour:
   _damage: 10
   _speed: 0
   _dieOnHit: 0
+  _shakeDuration: 0.1
+  _shakeStrength: 5
 --- !u!212 &21216552
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -142,6 +144,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 0}
+      propertyPath: _shakeDuration
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167852}
