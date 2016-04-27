@@ -40,10 +40,7 @@ public class Projectile : MonoBehaviour
 		// Если эта пуля принадлежит игроку и триггер - враг или если эта пуля принадлежит врагу и триггер - игрок, то
 		if((gameObject.tag == "PlayerBullet" && other.gameObject.tag == "Enemy") || (gameObject.tag == "EnemyBullet" && other.gameObject.tag == "Player"))
 		{
-            if(gameObject.tag == "PlayerBullet")
-            {
-                Camera.main.GetComponent<CameraShake>().Shake(_shakeDuration, _shakeStrength);
-            }
+            Camera.main.GetComponent<CameraShake>().Shake(_shakeDuration, _shakeStrength);
 
 			health.UpdateHealth(-_damage); // наносим урон
 			if(_hitEffect != null) // если есть префаб эввекта попадания
