@@ -19,6 +19,9 @@ public class ProjectileManager : MonoBehaviour
 	public float _projectileDamage; // Урон пуль
 	public bool _alwaysShoot; // Если true, то всегда стреляет, создано для врагов
 	public float _shootInterval; // Интервал между выстрелами в секундах
+	public float _shakeStrength = 5;
+	public float _shakeDuration = 0.2f;
+
 
 	public bool _shooting; // Если true, то стреляет, сделано для изменения значения их других скриптов, например ShipController
 
@@ -80,13 +83,17 @@ public class ProjectileManager : MonoBehaviour
 	GameObject SpawnProjectile()
 	{
 		// Создаём объект из префаба
-		var obj = Instantiate(_projectilePrefab);
-		obj.SetActive(false); // Отключаем его чтобы он не отрисовывался и не обновлялся
-		obj.gameObject.tag = _bulletOwner.ToString(); // присваиваем тэг для этой пули
-		obj.GetComponent<Projectile>()._damage = _projectileDamage; // Устанавливаем урон наносимый этой пулей
-		_projectilePool.Add(obj); // Добавляем её в пул
+		var obj = Instantiate (_projectilePrefab);
+		obj.SetActive (false); // Отключаем его чтобы он не отрисовывался и не обновлялся
+		obj.gameObject.tag = _bulletOwner.ToString (); // присваиваем тэг для этой пули
+		var projectile = obj.GetComponent<Projectile> ();
+		projectile._damage = _projectileDamage; // Устанавливаем урон наносимый этой пулей
+		projectile._shakeDuration = _shakeDuration;
+		projectile._shakeStrength = _shakeStrength;
 
-		return obj; // и возвращаем её вызывающей функции
+		_projectilePool.Add (obj); // Добавляем её в пул
+
+		return obj; // и возвращаем;
 	}
 
 	// Эта функция вызывается Unity когда объект уничтожен
