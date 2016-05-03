@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shoootPoints:
-  - {fileID: 421142}
+  - {fileID: 416616}
   _projectilePrefab: {fileID: 157762, guid: 1ad8bb60b6b8d554eb5e916444e77df1, type: 2}
   _bulletOwner: 1
   _projectileSpeed: 30
@@ -267,11 +267,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b06ab7356354706bc0ec1437443293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHealth: 100
   _health: 100
   _deathEffect: {fileID: 198470, guid: 3f70bc0a2dceb41db94ab126741464ec, type: 2}
-  _regenHealth: 1
-  _regenAmountPerSecond: 2
-  _timeBeforeRegen: 10
+  _regenHealth: 0
+  _regenAmountPerSecond: 0
+  _timeBeforeRegen: 0
 --- !u!114 &11478336
 MonoBehaviour:
   m_ObjectHideFlags: 1
