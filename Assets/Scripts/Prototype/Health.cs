@@ -3,7 +3,7 @@
 public class Health : MonoBehaviour
 {
 	public float _maxHealth = 100f;
-	public float _health = _maxHealth;
+	public float _health;
 	public GameObject _deathEffect;
 	public bool _regenHealth;
 	public float _regenAmountPerSecond;
@@ -11,13 +11,18 @@ public class Health : MonoBehaviour
 
 	float _lastDamageTime;
 
+    void Start()
+    {
+        _health = _maxHealth;
+    }
+
 	void Update()
 	{
 		if (_regenHealth)
 		{
 			if (Time.time - _lastDamageTime > _timeBeforeRegen)
 			{
-				_health += _regenAmountPerSecond * Time.deltaTime;
+				_health = Mathf.Min(_health + _regenAmountPerSecond * Time.deltaTime, _maxHealth);
 			}
 		}
 	}
