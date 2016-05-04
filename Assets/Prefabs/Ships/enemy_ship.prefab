@@ -187,10 +187,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e65ad10caf10d7e499e3d3e92a0dc798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
-  _sinSpeed: 1
-  _sinScale: 3
-  _viewportYScale: 0.8
+  _speed: 3.36
+  _sinSpeed: 0.62
+  _sinScale: 1.43
+  _viewportYScale: 0.85
 --- !u!114 &11421884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,7 +210,7 @@ MonoBehaviour:
   _projectileSpeed: 10
   _projectileDamage: 10
   _alwaysShoot: 1
-  _shootInterval: 1
+  _shootInterval: 0.5
   _shakeStrength: 5
   _shakeDuration: 0.2
   _shooting: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b06ab7356354706bc0ec1437443293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
+  _maxHealth: 20
   _health: 20
   _deathEffect: {fileID: 198470, guid: 3f70bc0a2dceb41db94ab126741464ec, type: 2}
   _regenHealth: 0
@@ -270,11 +270,27 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: _speed
-      value: 4
+      value: 3.36
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _shootInterval
-      value: 1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _viewportYScale
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _sinSpeed
+      value: 0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _sinScale
+      value: 1.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _maxHealth
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
