@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject _gameOverScreen;
+    public Camera _gameCamera;
 
 	GameObject _player;
 	int _score;
@@ -12,11 +13,13 @@ public class GameManager : MonoBehaviour
 	{
 		_player = GameObject.FindGameObjectWithTag("Player");
 
-		if(_player == null)
+		if(_player == null || _gameCamera == null)
 		{
-			Debug.LogError("Игрок не найден");
+			Debug.LogError("Игрок или камера не найдены");
 			gameObject.SetActive(false);
 		}
+
+        Camera.SetupCurrent(_gameCamera);
 	}
 
 	void FixedUpdate()

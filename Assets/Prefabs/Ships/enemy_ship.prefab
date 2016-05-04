@@ -85,7 +85,7 @@ Transform:
   m_GameObject: {fileID: 190046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 42.14238, y: -22.293615, z: 0}
-  m_LocalScale: {x: 0.7497808, y: 0.74978083, z: 0.74978083}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_Children:
   - {fileID: 465186}
   m_Father: {fileID: 0}
@@ -188,6 +188,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
+  _sinSpeed: 1
+  _sinScale: 3
+  _viewportYScale: 0.8
 --- !u!114 &11421884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -208,6 +211,8 @@ MonoBehaviour:
   _projectileDamage: 10
   _alwaysShoot: 1
   _shootInterval: 1
+  _shakeStrength: 5
+  _shakeDuration: 0.2
   _shooting: 0
 --- !u!114 &11446468
 MonoBehaviour:
@@ -220,8 +225,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b06ab7356354706bc0ec1437443293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHealth: 100
   _health: 20
   _deathEffect: {fileID: 198470, guid: 3f70bc0a2dceb41db94ab126741464ec, type: 2}
+  _regenHealth: 0
+  _regenAmountPerSecond: 0
+  _timeBeforeRegen: 0
 --- !u!212 &21234594
 SpriteRenderer:
   m_ObjectHideFlags: 1

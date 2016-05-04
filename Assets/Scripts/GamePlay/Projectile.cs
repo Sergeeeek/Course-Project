@@ -15,11 +15,20 @@ public class Projectile : MonoBehaviour
     public float _shakeDuration = 0.2f;
     public float _shakeStrength = 5f;
 
+    Camera _camera;
+    CameraShake _shakeCamera;
+
+    void Start()
+    {
+        _camera = FindObjectOfType<GameManager>()._gameCamera;
+        _shakeCamera = _camera.GetComponent<CameraShake>();
+    }
+
 	void Update()
 	{
 		// Получаем координаты viewport'а из координат мира этой пули
 		// Координаты viewport'а начинаются в левом верхнем углу экрана (0,0) и заканчиваются в нижнем правом (1,1)
-		var viewPortPos = Camera.main.WorldToViewportPoint(transform.position);
+		var viewPortPos = _camera.WorldToViewportPoint(transform.position);
 
 		if(viewPortPos.x > 1f || viewPortPos.x < 0f || viewPortPos.y > 1f || viewPortPos.y < 0f) // если за пределами экрана
 		{
@@ -40,7 +49,7 @@ public class Projectile : MonoBehaviour
 		// Если эта пуля принадлежит игроку и триггер - враг или если эта пуля принадлежит врагу и триггер - игрок, то
 		if((gameObject.tag == "PlayerBullet" && other.gameObject.tag == "Enemy") || (gameObject.tag == "EnemyBullet" && other.gameObject.tag == "Player"))
 		{
-            Camera.main.GetComponent<CameraShake>().Shake(_shakeDuration, _shakeStrength);
+            _shakeCamera.Shake(_shakeDuration, _shakeStrength);
 
 			health.UpdateHealth(-_damage); // наносим урон
 			if(_hitEffect != null) // если есть префаб эввекта попадания

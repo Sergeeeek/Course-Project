@@ -1,23 +1,28 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using UnityEngine; // Большинство классов и функций Unity
+using System.Collections.Generic; // Включено для использования класса List<T>
 
+/// <summary>
+/// Этот компонент обрабатывает ввод игрока и превращает его в движение корабля
+/// </summary>
 public class ShipController : MonoBehaviour
 {
+    // Список всех орудий на корабле
 	List<ProjectileManager> _guns;
 
-	public float _acceleration;
-	public float _maxSpeed;
-	public float _drag;
+	public float _acceleration; // Ускорение
+	public float _maxSpeed; // Максимальная скорость
+	public float _drag; // "Сопротивление воздуха" - скорость остановки корабля когда игрок ничего не нажимает
 
-	Vector3 _currentVelocity;
-	Vector3 _targetPosition;
+	Vector3 _currentVelocity; // Текущая скорость
 
-	Vector3 _objectSize;
+	Vector3 _objectSize; // Размер корабля
 
 	void Start()
 	{
+        // Автоматически сканируем и создаём список всех орудий из под-объектов (или "детей") этого игрового объекта
 		_guns = new List<ProjectileManager>(GetComponentsInChildren<ProjectileManager>());
 
+        // Размер корабля равен размеру спрайта (картинки) корабля из компонента SpriteRenderer
 		_objectSize = GetComponent<SpriteRenderer>().bounds.size;
 	}
 
@@ -25,31 +30,41 @@ public class ShipController : MonoBehaviour
 	{
 		Vector3 input;
 
+        // Если есть поддержка сенсорного экрана
 		if(Input.touchSupported)
 		{
+            // Если кол-во нажатий = 0
 			if(Input.touchCount == 0)
 				return;
 
+            // Получаем данные о первом нажатии
 			var t = Input.GetTouch(0);
-			_targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(t.position.x, t.position.y));
+            // Переводим координаты нажатия из системы координат экрана в мировую систему координат
+			Vector3 _targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(t.position.x, t.position.y));
 
+            // Вектор направления от текущей позиции к точке нажатия
 			input = _targetPosition - transform.position;
 
 		}
 		else
 		{
+            // Получаем горизонтальную ось ввода (A-D на клавиатуре)
 			var xInput = Input.GetAxisRaw("Horizontal");
+            // Получаем вертикальную ось ввода (W-S на клавиатуре)
 			var yInput = Input.GetAxisRaw("Vertical");
 
+            // Объединяем гориз. и верт. ввод в один вектор
 			input = new Vector3(xInput, yInput);
 
 			var drag = new Vector3();
 
-			if(Mathf.Approximately(0, xInput))
+            // Если x примерно равен 0
+			if(Mathf.Approximately(0, input.x))
 			{
+                // Добавляем замедление к кораблю
 				drag.x = -_currentVelocity.x * _drag;
 			}
-			if(Mathf.Approximately(0, yInput))
+			if(Mathf.Approximately(0, input.y))
 			{
 				drag.y = -_currentVelocity.y * _drag;
 			}
@@ -57,8 +72,8 @@ public class ShipController : MonoBehaviour
 			_currentVelocity += drag;
 		}
 
-		input.Normalize();
-		_currentVelocity += _acceleration * input;
+		input.Normalize(); // Нормализуем вектор ввода, после этого его длина становится равна 1
+		_currentVelocity += _acceleration * input * Time.deltaTime; // 
 
 		if(_currentVelocity.magnitude >= _maxSpeed)
 		{
