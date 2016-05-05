@@ -11,4 +11,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1051e1378cc6aeb45a118c7279a2c821, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  _messages: []
+  _messages:
+  - _speaker: 2
+    _phrases:
+    - _text: Asjhdgaukdhauhd
+      _audio: {fileID: 0}
+    - _text: adqdwe2e
+      _audio: {fileID: 0}
+    - _text: sdgdghser
+      _audio: {fileID: 0}
+    - _text: 
+      _audio: {fileID: 0}
+  - _speaker: 0
+    _phrases: []
+  - _speaker: 0
+    _phrases: []
+  - _speaker: 0
+    _phrases: []
+  - _speaker: 0
+    _phrases: []
