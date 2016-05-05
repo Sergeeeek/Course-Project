@@ -6,7 +6,6 @@ using UnityEditor;
 [ExecuteInEditMode]
 public class EnemySpawner : MonoBehaviour
 {
-#region Public Fields
 	public float _size = 10f;
 	public AnimationCurve _animation;
 	public bool _spawnAtRandomLocations;
@@ -17,8 +16,7 @@ public class EnemySpawner : MonoBehaviour
 	public GameObject _enemyPrefab;
 
 	public int _spawnCount;
-	public bool _alwaysSpawn = true;
-#endregion
+	public bool _alwaysSpawn = false;
 
 	float _timer;
 	float _lastSpawnTime;
@@ -51,6 +49,10 @@ public class EnemySpawner : MonoBehaviour
 			_currentSpawnCount++;
 			_lastSpawnTime = _timer;
 		}
+        else if(_currentSpawnCount >= _spawnCount)
+        {
+            gameObject.SetActive(false);
+        }
 	}
 
 	#if UNITY_EDITOR
