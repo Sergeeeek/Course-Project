@@ -18,9 +18,12 @@ public struct Phrase
 [System.Serializable]
 public struct Message
 {
+    [Tooltip("Кто говорит")]
 	public Character _speaker;
+    [Tooltip("Какую картинку показать в диалоге")]
+    public Sprite _sprite;
+    [Tooltip("Текст который будет отображаться")]
 	public List<Phrase> _phrases;
-	
 }
 
 [CreateAssetMenu()]
