@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOverScreen: {fileID: 640725439}
   _gameCamera: {fileID: 1595260400}
-  _dialogBeforeLevel: Test
+  _dialogBeforeLevel: Level1IntroDialog
   _enemyWaves:
   - _pauseBeforeStarting: 10
     _enemySpawners:
