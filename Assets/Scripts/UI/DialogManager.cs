@@ -126,6 +126,7 @@ public class DialogManager : MonoBehaviour
         else
         {
             _currentPhrase++;
+            _currentCharacter = 0;
         }
 
         GetText().text = "";
