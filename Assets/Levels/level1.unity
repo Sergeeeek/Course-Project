@@ -174,7 +174,7 @@ MonoBehaviour:
   _gameCamera: {fileID: 1595260400}
   _dialogBeforeLevel: Level1IntroDialog
   _enemyWaves:
-  - _pauseBeforeStarting: 10
+  - _pauseBeforeStarting: 3
     _enemySpawners:
     - {fileID: 1770313913}
   _dialogBeforeBoss: 
