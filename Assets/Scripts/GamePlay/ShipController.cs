@@ -7,7 +7,7 @@ using System.Collections.Generic; // Включено для использов�
 public class ShipController : MonoBehaviour
 {
     // Список всех орудий на корабле
-	List<ProjectileManager> _guns;
+	List<IGun> _guns;
 
 	public float _acceleration; // Ускорение
 	public float _maxSpeed; // Максимальная скорость
@@ -19,8 +19,14 @@ public class ShipController : MonoBehaviour
 
 	void Start()
 	{
+        _guns = new List<IGun>();
         // Автоматически сканируем и создаём список всех орудий из под-объектов (или "детей") этого игрового объекта
-		_guns = new List<ProjectileManager>(GetComponentsInChildren<ProjectileManager>());
+        var comps = GetComponentsInChildren(typeof(IGun));
+
+        foreach(var comp in comps)
+        {
+            _guns.Add(comp as IGun);
+        }
 
         // Размер корабля равен размеру спрайта (картинки) корабля из компонента SpriteRenderer
 		_objectSize = GetComponent<SpriteRenderer>().bounds.size;

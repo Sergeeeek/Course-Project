@@ -2,6 +2,8 @@
 
 public class Projectile : MonoBehaviour
 {
+    public GunOwner _owner;
+
 	// Префаб создаваемый при попадании пули
 	public GameObject _hitEffect;
 	// Урон от пули
@@ -47,7 +49,7 @@ public class Projectile : MonoBehaviour
 			return;
 
 		// Если эта пуля принадлежит игроку и триггер - враг или если эта пуля принадлежит врагу и триггер - игрок, то
-		if((gameObject.tag == "PlayerBullet" && other.gameObject.tag == "Enemy") || (gameObject.tag == "EnemyBullet" && other.gameObject.tag == "Player"))
+		if((_owner == GunOwner.Player && other.gameObject.layer == LayerMask.NameToLayer("Enemies")) || (_owner == GunOwner.Enemy && other.gameObject.layer == LayerMask.NameToLayer("Player")))
 		{
             _shakeCamera.Shake(_shakeDuration, _shakeStrength);
 

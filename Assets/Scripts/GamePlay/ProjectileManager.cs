@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic; // Нужно что-бы использовать тип List<T>
 using UnityEngine; // Для классов MonoBehaviour, GameObject, Transform и т.д.
 
-public class ProjectileManager : MonoBehaviour
+// Нужно для определения владельца пули
+public enum GunOwner
 {
-	// Нужно для определения владельца пули
-	public enum BulletOwner 
-	{
-		EnemyBullet,
-		PlayerBullet
-	}
+    Enemy,
+    Player
+}
 
+public class ProjectileManager : MonoBehaviour, IGun
+{
 	public List<Transform> _shoootPoints = new List<Transform>(); // Список точек откуда будут появлятся пули
 	public GameObject _projectilePrefab; // Префаб пуль
 
-	public BulletOwner _bulletOwner; // Владелец всех пуль этого ProjectileManager'а
+	public GunOwner _owner; // Владелец всех пуль этого ProjectileManager'а
 
 	public float _projectileSpeed; // Скорость пуль
 	public float _projectileDamage; // Урон пуль
@@ -22,8 +22,8 @@ public class ProjectileManager : MonoBehaviour
 	public float _shakeStrength = 5;
 	public float _shakeDuration = 0.2f;
 
-
-	public bool _shooting; // Если true, то стреляет, сделано для изменения значения их других скриптов, например ShipController
+    // Имплементация интерфейса IGun
+	public bool _shooting { get; set; } // Если true, то стреляет, сделано для изменения значения их других скриптов, например ShipController
 
 	List<GameObject> _projectilePool; // Список пуль
 
@@ -85,8 +85,8 @@ public class ProjectileManager : MonoBehaviour
 		// Создаём объект из префаба
 		var obj = Instantiate (_projectilePrefab);
 		obj.SetActive (false); // Отключаем его чтобы он не отрисовывался и не обновлялся
-		obj.gameObject.tag = _bulletOwner.ToString (); // присваиваем тэг для этой пули
 		var projectile = obj.GetComponent<Projectile> ();
+        projectile._owner = _owner;
 		projectile._damage = _projectileDamage; // Устанавливаем урон наносимый этой пулей
 		projectile._shakeDuration = _shakeDuration;
 		projectile._shakeStrength = _shakeStrength;
