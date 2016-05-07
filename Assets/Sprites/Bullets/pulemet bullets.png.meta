@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 14a2f60fb8ab5b1499a129134e180ef5
-timeCreated: 1462521668
+guid: e7fb822bcb0338a46bc30d5a693acacd
+timeCreated: 1462617031
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -44,14 +44,14 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 217
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
     sprites: []
     outline: []
-  spritePackingTag: CharacterDialog
+  spritePackingTag: Bullet
   userData: 
   assetBundleName: 
   assetBundleVariant: 
