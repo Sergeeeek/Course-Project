@@ -105,10 +105,12 @@ public class ProjectileManager : MonoBehaviour, IGun
 			if(obj == null) // если она не существует
 				continue; // пропустить её
 			
+            // Получаем компонент Projectile этого объекта
 			var proj = obj.GetComponent<Projectile>();
 
 			if(proj != null)
 			{
+                // Устанавливаем флаг уничтожения при попадании, без него объект бы просто стал неактивен
 				proj._dieOnHit = true;
 			}
 		}
