@@ -76,14 +76,14 @@ public class GameManager : MonoBehaviour
                 _dialogManager.StopDialog();
         }
 
-        if(!_dialogBeforeBossStarted)
+        if(!_dialogBeforeLevelStarted)
         {
             StartDialog(_dialogBeforeLevel, x =>
             {
                 _dialogBeforeLevelFinished = true;
                 _lastWaveTime = Time.time;
             });
-            _dialogBeforeBossStarted = true;
+            _dialogBeforeLevelStarted = true;
         }
         
         if(_enemyWaves.Count == 0)
@@ -165,8 +165,10 @@ public class GameManager : MonoBehaviour
             if (callback != null)
                 callback(name);
         }
-
-        _dialogManager.StartDialog(name, callback);
+        else
+        {
+            _dialogManager.StartDialog(name, callback);
+        }
     }
 
     void GameOver()
