@@ -190,6 +190,7 @@ MonoBehaviour:
   _speed: 3.36
   _sinSpeed: 0.62
   _sinScale: 1.43
+  _xOffset: -0.39
   _viewportYScale: 0.85
 --- !u!114 &11421884
 MonoBehaviour:
@@ -208,7 +209,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 157762, guid: 1ad8bb60b6b8d554eb5e916444e77df1, type: 2}
   _owner: 0
   _projectileSpeed: 10
-  _projectileDamage: 10
+  _projectileDamage: 5
   _alwaysShoot: 1
   _shootInterval: 0.5
   _shakeStrength: 5
@@ -225,11 +226,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 20
-  _health: 20
   _deathEffect: {fileID: 198470, guid: 3f70bc0a2dceb41db94ab126741464ec, type: 2}
   _regenHealth: 0
   _regenAmountPerSecond: 0
   _timeBeforeRegen: 0
+  _shakeDurationMultiplier: 0
+  _shakeIntensityMultiplier: 0
 --- !u!212 &21234594
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -294,6 +296,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _xOffset
+      value: -0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _projectileDamage
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

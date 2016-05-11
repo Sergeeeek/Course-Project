@@ -249,11 +249,15 @@ MonoBehaviour:
   _owner: 1
   _shootPoints:
   - {fileID: 416616}
-  _bulletsPerSecond: 10
-  _maxDistance: 15
-  _angleSpread: 0
-  _damage: 0
+  _shakeIntensity: 5
+  _shakeDuration: 0.05
+  _bulletsPerSecond: 5
+  _distance: 17
+  _distanceSpread: 1
+  _angleSpread: 1
+  _damage: 20
   _bulletPrefab: {fileID: 195144, guid: 1b546268e1d5aed4c985bf15eca4c623, type: 2}
+  _hitEffectPrefab: {fileID: 186254, guid: 9ad9a86784d9f3b4b9499869d8c6b6c4, type: 2}
   _bulletVisibleTime: 0.05
 --- !u!114 &11417696
 MonoBehaviour:
@@ -266,12 +270,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b06ab7356354706bc0ec1437443293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _health: 100
+  _maxHealth: 500
+  _health: 500
   _deathEffect: {fileID: 198470, guid: 3f70bc0a2dceb41db94ab126741464ec, type: 2}
   _regenHealth: 1
   _regenAmountPerSecond: 20
   _timeBeforeRegen: 5
+  _shakeDurationMultiplier: 1
+  _shakeIntensityMultiplier: 2
 --- !u!114 &11478336
 MonoBehaviour:
   m_ObjectHideFlags: 1

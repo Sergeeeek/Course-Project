@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &147844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 406664}
+  - 114: {fileID: 11449646}
+  m_Layer: 9
+  m_Name: mini_boss_minigun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &150212
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 445838}
+  m_Layer: 9
+  m_Name: p2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &162610
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 409110}
+  m_Layer: 9
+  m_Name: p1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &165040
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,13 +56,53 @@ GameObject:
   - 4: {fileID: 450910}
   - 212: {fileID: 21258680}
   - 114: {fileID: 11409652}
-  m_Layer: 0
+  - 114: {fileID: 11453292}
+  - 60: {fileID: 6071368}
+  m_Layer: 9
   m_Name: enemy3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &406664
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 409110}
+  - {fileID: 445838}
+  m_Father: {fileID: 450910}
+  m_RootOrder: 0
+--- !u!4 &409110
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162610}
+  m_LocalRotation: {x: 0, y: 0, z: 0.70710665, w: 0.70710695}
+  m_LocalPosition: {x: -1.13, y: -0.69000006, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 406664}
+  m_RootOrder: 0
+--- !u!4 &445838
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150212}
+  m_LocalRotation: {x: 0, y: 0, z: 0.70710665, w: 0.70710695}
+  m_LocalPosition: {x: -1.78, y: -0.19000003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 406664}
+  m_RootOrder: 1
 --- !u!4 &450910
 Transform:
   m_ObjectHideFlags: 1
@@ -24,11 +110,84 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.18, y: -2.27, z: 0}
+  m_LocalPosition: {x: 3.1424065, y: -1.6278467, z: 0}
   m_LocalScale: {x: 0.82250255, y: 0.82250255, z: 0.82250255}
-  m_Children: []
+  m_Children:
+  - {fileID: 406664}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!60 &6071368
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165040}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 0.60499996, y: -0.945}
+      - {x: 0.675, y: -0.885}
+      - {x: 0.695, y: -0.85499996}
+      - {x: 0.875, y: -0.695}
+      - {x: 1.015, y: -0.45499998}
+      - {x: 1.045, y: -0.435}
+      - {x: 1.165, y: -0.325}
+      - {x: 1.225, y: -0.235}
+      - {x: 1.275, y: -0.074999996}
+      - {x: 1.285, y: 0.155}
+      - {x: 1.305, y: 0.24499999}
+      - {x: 1.395, y: 0.295}
+      - {x: 1.655, y: 0.355}
+      - {x: 1.915, y: 0.345}
+      - {x: 1.935, y: 0.39499998}
+      - {x: 1.935, y: 0.465}
+      - {x: 1.795, y: 0.60499996}
+      - {x: 1.535, y: 0.775}
+      - {x: 1.365, y: 0.835}
+      - {x: 0.885, y: 0.905}
+      - {x: 0.39499998, y: 0.905}
+      - {x: 0.24499999, y: 0.895}
+      - {x: -0.055, y: 0.905}
+      - {x: -0.085, y: 0.945}
+      - {x: -0.33499998, y: 0.945}
+      - {x: -0.545, y: 0.835}
+      - {x: -0.645, y: 0.745}
+      - {x: -0.73499995, y: 0.655}
+      - {x: -0.895, y: 0.645}
+      - {x: -1.015, y: 0.585}
+      - {x: -1.175, y: 0.405}
+      - {x: -1.165, y: 0.325}
+      - {x: -1.245, y: 0.355}
+      - {x: -1.3149999, y: 0.345}
+      - {x: -1.475, y: 0.21499999}
+      - {x: -1.7049999, y: 0.065}
+      - {x: -1.8349999, y: -0.085}
+      - {x: -1.885, y: -0.195}
+      - {x: -1.875, y: -0.24499999}
+      - {x: -1.915, y: -0.415}
+      - {x: -1.935, y: -0.49499997}
+      - {x: -1.935, y: -0.72499996}
+      - {x: -1.915, y: -0.775}
+      - {x: -1.765, y: -0.905}
+      - {x: -1.605, y: -0.905}
+      - {x: -1.375, y: -0.895}
+      - {x: -1.115, y: -0.865}
+      - {x: -0.98499995, y: -0.92499995}
+      - {x: -0.825, y: -0.945}
+    - - {x: -0.044999998, y: -0.66499996}
+      - {x: -0.044999998, y: -0.625}
+      - {x: -0.005, y: -0.645}
+      - {x: 0.074999996, y: -0.66499996}
+      - {x: 0.085, y: -0.675}
+      - {x: 0.114999995, y: -0.66499996}
+      - {x: -0.044999998, y: -0.655}
+      - {x: -0.065, y: -0.675}
+      - {x: -0.055, y: -0.675}
 --- !u!114 &11409652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -59,6 +218,50 @@ MonoBehaviour:
   _moveSpeed: 1
   _delayBetweenMoving: 1
   _edgeMargin: 0.2
+--- !u!114 &11449646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4aba711b22b5ed45997bbde753c1bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _alwaysShooting: 1
+  _owner: 0
+  _shootPoints:
+  - {fileID: 409110}
+  - {fileID: 445838}
+  _shakeIntensity: 0
+  _shakeDuration: 0
+  _bulletsPerSecond: 5
+  _distance: 12
+  _distanceSpread: 2
+  _angleSpread: 1
+  _damage: 2
+  _bulletPrefab: {fileID: 195144, guid: 1b546268e1d5aed4c985bf15eca4c623, type: 2}
+  _bulletVisibleTime: 0.01
+--- !u!114 &11453292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b06ab7356354706bc0ec1437443293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _health: 0
+  _deathEffect: {fileID: 0}
+  _regenHealth: 0
+  _regenAmountPerSecond: 0
+  _timeBeforeRegen: 0
+  _shakeDurationMultiplier: 0
+  _shakeIntensityMultiplier: 0
 --- !u!212 &21258680
 SpriteRenderer:
   m_ObjectHideFlags: 1
