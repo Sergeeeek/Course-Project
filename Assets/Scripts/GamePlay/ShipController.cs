@@ -9,9 +9,12 @@ public class ShipController : MonoBehaviour
     // Список всех орудий на корабле
 	List<IGun> _guns;
 
-	public float _acceleration; // Ускорение
-	public float _maxSpeed; // Максимальная скорость
-	public float _drag; // "Сопротивление воздуха" - скорость остановки корабля когда игрок ничего не нажимает
+    [Tooltip("Ускорение")]
+	public float _acceleration;
+    [Tooltip("Максимальная скорость")]
+	public float _maxSpeed;
+    [Tooltip("Торможение когда игрок ничего не нажимает")]
+	public float _drag;
 
 	Vector3 _currentVelocity; // Текущая скорость
 
@@ -75,39 +78,52 @@ public class ShipController : MonoBehaviour
 				drag.y = -_currentVelocity.y * _drag;
 			}
 
+            // Добавляем торможение к скорости
 			_currentVelocity += drag;
 		}
 
 		input.Normalize(); // Нормализуем вектор ввода, после этого его длина становится равна 1
-		_currentVelocity += _acceleration * input * Time.deltaTime; // 
+		_currentVelocity += _acceleration * input * Time.deltaTime; // Прибавляем ускорение в нужном направлении к скорости
 
+        // Если скорость выше максимальной
 		if(_currentVelocity.magnitude >= _maxSpeed)
 		{
+            // Ограничиваем её
 			_currentVelocity *= _maxSpeed / _currentVelocity.magnitude;
 		}
 
+        // Если скорость примерно 0
 		if(Mathf.Approximately(0, _currentVelocity.magnitude))
 		{
+            // То скорость = (0, 0, 0)
 			_currentVelocity = Vector3.zero;
 		}
 
+        // Передвигаем этот объект с текущей скоростью в мировых координатах
 		transform.Translate(_currentVelocity * Time.deltaTime, Space.World);
 
+        // Ограничиваем передвижение корабля границами экрана
 		keepOnScreen();
 
+        // Если кнопка ShipFire (пробел) нажата или устройство имеет сенсорный экран (например смартфон)
 		var shooting = Input.GetButton("ShipFire") || Input.touchSupported;
+        // То всё оружие на корабле должно стрелять
 		_guns.ForEach(x => x._shooting = shooting);
 	}
 
+    // Функция для ограничения движения корабля границами экрана
 	void keepOnScreen()
 	{
+        // Позиция нижнего левого и правого верхнего угла камеры в мировых координатах
 		var bottomleftCam = Camera.main.ViewportToWorldPoint(new Vector3(0, 0));
 		var toprightCam = Camera.main.ViewportToWorldPoint(new Vector3(1, 1));
 
+        // запоминаем текущую z позицию корабля
 		var z = transform.position.z;
 
 		var size = _objectSize;
 
+        // Проверяем вышел ли корабль за границы экрана
 		if(transform.position.x - size.x / 2f <= bottomleftCam.x)
 		{
 			transform.position = new Vector3(bottomleftCam.x + size.x / 2f, transform.position.y, z);

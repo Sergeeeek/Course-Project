@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 419434}
   - 212: {fileID: 21298710}
   m_Layer: 0
-  m_Name: laser_end 1
+  m_Name: laser_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

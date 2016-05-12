@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 482132}
   - 212: {fileID: 21282088}
   m_Layer: 0
-  m_Name: laser_end
+  m_Name: laser_start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23,8 +23,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8514817, y: -1.5750563, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -4.317342, y: -2.3181424, z: 0}
+  m_LocalScale: {x: 0.37453124, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
