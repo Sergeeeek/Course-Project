@@ -18,10 +18,10 @@ public class SimpleEnemyController : MonoBehaviour
 
     void Start()
     {
-        // Определяем начальные координаты по $y$ для получения соответсвующего $x$ по формуле $x=\arcsin{y}$
-        // Чтобы получить координаты $y\subset{}[-1;1]$ нужно перевести позицию объекта из координат мира в координаты
-        // Viewport'а, в которых нижний левый край экрана имеет координаты $(0,0)$, а верхний правый $(1,1)$.
-        // Затем $y$ находится по формуле $y=y'\cdot{}2-1$, где $y'\subset{}[0;1]$
+        // Определяем начальные координаты по y для получения соответсвующего x по формуле x=arcsin(y)
+        // Чтобы получить координаты y - [-1;1] нужно перевести позицию объекта из координат мира в координаты
+        // Viewport'а, в которых нижний левый край экрана имеет координаты (0,0), а верхний правый (1,1).
+        // Затем y находится по формуле y=y' * 2 - 1, где y' - [0;1]
         var _startY = Camera.main.WorldToViewportPoint(transform.position).y * 2f - 1f;
         x = Mathf.Asin(_startY) + _xOffset;
     }
@@ -31,9 +31,9 @@ public class SimpleEnemyController : MonoBehaviour
         x += _sinSpeed * Time.deltaTime;
 
         // Чтобы получить мировые координаты из координат Viewport'а нужно провести обратный процесс
-        // Сначала расчитывается $y'=\sin{x}$. Затем чтобы перевести координаты из $y'\subset{}[-1;1]$
-        // в $y\subset{}[0;1]$, которые нужны для перевода обратно в мировые координаты
-        // используется формула $y=\frac{y'+1}{2}$
+        // Сначала расчитывается y'=sin(x). Затем чтобы перевести координаты из y' - [-1;1]
+        // в y - [0;1], которые нужны для перевода обратно в мировые координаты
+        // используется формула y=(y'+1)/2$
         var y = (Mathf.Sin(x * _sinScale) * _viewportYScale + 1f) / 2f;
         var worldY = Camera.main.ViewportToWorldPoint(new Vector3(0f, y)).y;
 
@@ -42,7 +42,7 @@ public class SimpleEnemyController : MonoBehaviour
         // Разность векторов для нахождения угла
         var diffVec = new Vector3(transform.position.x, transform.position.y) - newVec;
 
-        // Находим угол вектора через $\arctan$ отношения $y$ и $x$
+        // Находим угол вектора через arctan отношения y и x
         var angle = Mathf.Atan2(diffVec.y, diffVec.x);
 
         // Устанавливаем новую позицию и ротацию объекта
