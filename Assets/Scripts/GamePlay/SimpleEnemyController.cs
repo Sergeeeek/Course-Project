@@ -33,7 +33,7 @@ public class SimpleEnemyController : MonoBehaviour
         // Чтобы получить мировые координаты из координат Viewport'а нужно провести обратный процесс
         // Сначала расчитывается y'=sin(x). Затем чтобы перевести координаты из y' - [-1;1]
         // в y - [0;1], которые нужны для перевода обратно в мировые координаты
-        // используется формула y=(y'+1)/2$
+        // используется формула y=(y'+1)/2
         var y = (Mathf.Sin(x * _sinScale) * _viewportYScale + 1f) / 2f;
         var worldY = Camera.main.ViewportToWorldPoint(new Vector3(0f, y)).y;
 
