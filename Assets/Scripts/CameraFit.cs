@@ -27,7 +27,7 @@ using System.Collections;
 using UnityEngine;
 
 [ExecuteInEditMode]
-[RequireComponent (typeof (Camera))]
+[RequireComponent(typeof(Camera))]
 public class CameraFit : MonoBehaviour
 {
     #region FIELDS
@@ -54,60 +54,82 @@ public class CameraFit : MonoBehaviour
     #endregion
 
     #region PROPERTIES
-    public float Width {
-        get {
+    public float Width
+    {
+        get
+        {
             return _width;
         }
     }
-    public float Height {
-        get {
+    public float Height
+    {
+        get
+        {
             return _height;
         }
     }
 
     // helper points:
-    public Vector3 BottomLeft {
-        get {
+    public Vector3 BottomLeft
+    {
+        get
+        {
             return _bl;
         }
     }
-    public Vector3 BottomCenter {
-        get {
+    public Vector3 BottomCenter
+    {
+        get
+        {
             return _bc;
         }
     }
-    public Vector3 BottomRight {
-        get {
+    public Vector3 BottomRight
+    {
+        get
+        {
             return _br;
         }
     }
-    public Vector3 MiddleLeft {
-        get {
+    public Vector3 MiddleLeft
+    {
+        get
+        {
             return _ml;
         }
     }
-    public Vector3 MiddleCenter {
-        get {
+    public Vector3 MiddleCenter
+    {
+        get
+        {
             return _mc;
         }
     }
-    public Vector3 MiddleRight {
-        get {
+    public Vector3 MiddleRight
+    {
+        get
+        {
             return _mr;
         }
     }
-    public Vector3 TopLeft {
-        get {
+    public Vector3 TopLeft
+    {
+        get
+        {
             return _tl;
         }
     }
-    public Vector3 TopCenter {
-        get {
+    public Vector3 TopCenter
+    {
+        get
+        {
             return _tc;
         }
     }
-    public Vector3 TopRight {
-        get {
+    public Vector3 TopRight
+    {
+        get
+        {
             return _tr;
         }
     }
@@ -124,9 +146,12 @@ public class CameraFit : MonoBehaviour
     {
         float leftX, rightX, topY, bottomY;
 
-        if(constraint == Constraint.Landscape){
-            camera.orthographicSize = 1f / camera.aspect * UnitsSize / 2f;    
-        }else{
+        if (constraint == Constraint.Landscape)
+        {
+            camera.orthographicSize = 1f / camera.aspect * UnitsSize / 2f;
+        }
+        else
+        {
             camera.orthographicSize = UnitsSize / 2f;
         }
 
@@ -152,29 +177,33 @@ public class CameraFit : MonoBehaviour
         _mr = new Vector3(rightX, cameraY, 0);
         //*** top
         _tl = new Vector3(leftX, topY, 0);
-        _tc = new Vector3(cameraX, topY , 0);
+        _tc = new Vector3(cameraX, topY, 0);
         _tr = new Vector3(rightX, topY, 0);
         Instance = this;
     }
 
     private void Update()
     {
-        if(Application.isEditor)
+        if (Application.isEditor)
         {
             ComputeResolution();
         }
     }
 
-    void OnDrawGizmos() {
+    void OnDrawGizmos()
+    {
         Gizmos.color = wireColor;
 
         Matrix4x4 temp = Gizmos.matrix;
         Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
-        if (camera.orthographic) {
+        if (camera.orthographic)
+        {
             float spread = camera.farClipPlane - camera.nearClipPlane;
-            float center = (camera.farClipPlane + camera.nearClipPlane)*0.5f;
-            Gizmos.DrawWireCube(new Vector3(0,0,center), new Vector3(camera.orthographicSize*2*camera.aspect, camera.orthographicSize*2, spread));
-        } else {
+            float center = (camera.farClipPlane + camera.nearClipPlane) * 0.5f;
+            Gizmos.DrawWireCube(new Vector3(0, 0, center), new Vector3(camera.orthographicSize * 2 * camera.aspect, camera.orthographicSize * 2, spread));
+        }
+        else
+        {
             Gizmos.DrawFrustum(Vector3.zero, camera.fieldOfView, camera.farClipPlane, camera.nearClipPlane, camera.aspect);
         }
         Gizmos.matrix = temp;
