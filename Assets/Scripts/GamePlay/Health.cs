@@ -52,7 +52,7 @@ public class Health : MonoBehaviour
     /// Публичная функция для изменения здоровья из вне
     /// </summary>
     /// <param name="deltaHealth">сколько здоровья прибавить</param>
-	public void UpdateHealth(float deltaHealth)
+	public void ChangeHealth(float deltaHealth)
 	{
 		_health += deltaHealth;
 
@@ -60,7 +60,7 @@ public class Health : MonoBehaviour
 		if (deltaHealth < 0)
 		{
             // Трясём камеру
-            _shake.Shake(_shakeDurationMultiplier, _shakeIntensityMultiplier);
+            _shake.Shake(_shakeDurationMultiplier * deltaHealth, _shakeIntensityMultiplier * deltaHealth);
             // Запоминаем время последнего нанесения урона
 			_lastDamageTime = Time.time;
 		}

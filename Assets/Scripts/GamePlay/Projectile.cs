@@ -53,7 +53,7 @@ public class Projectile : MonoBehaviour
 		{
             _shakeCamera.Shake(_shakeDuration, _shakeStrength);
 
-			health.UpdateHealth(-_damage); // наносим урон
+			health.ChangeHealth(-_damage); // наносим урон
 			if(_hitEffect != null) // если есть префаб эввекта попадания
 				Instantiate(_hitEffect, transform.position, Quaternion.identity); // то создаём этот эффект в месте попадания
 
