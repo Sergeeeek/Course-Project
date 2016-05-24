@@ -19,8 +19,6 @@ public struct Phrase
 {
     [Tooltip("Текст который будет печататься")]
 	public string _text;
-    [Tooltip("Аудио файл который будет проигрываться")]
-	public AudioClip _audio;
 }
 
 /// <summary>
